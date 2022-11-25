@@ -1,13 +1,13 @@
 <a href="https://www.php-nuke-titanium.86it.us" rel="nofollow"><img src="/images/github/github_rip_open2.png" alt="PHP-NUke Titanium" style="max-width: 100%;"></a>
 
-<h2>Changes at TheGhost's Online Humble Abode - PHP-Nuke Titanium v4.0.3</h2></br>
-TheGhost's Website https://www.theghost.86it.us <-(This Code Running Live) SIGN UP AND CHECK IT OUT!!!
+<h2>Changes at TheGhost's Online Humble Abode - PHP-Nuke Titanium v4.0.3</h2>
+<p>TheGhost's Website https://www.theghost.86it.us <-(This Code Running Live) SIGN UP AND CHECK IT OUT!!!</p>
 
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fernestbuffington%2FPHP-Nuke.Titanium.Dev.4.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fernestbuffington%2FPHP-Nuke.Titanium.Dev.4?ref=badge_shield)  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e5300f0dccdb4bcc9b7bdbc5d6e65f50)](https://www.codacy.com/gh/ernestbuffington/PHP-Nuke.Titanium.Dev.4/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ernestbuffington/PHP-Nuke.Titanium.Dev.4&amp;utm_campaign=Badge_Grade)
 
-<h2>PHP-Nuke Titanium v4.0.3 2022 Nightly Build Repo</h2></br>
-Support Website is at https://www.php-nuke-titanium.86it.us
+<h2>PHP-Nuke Titanium v4.0.3 2022 Nightly Build Repo</h2>
+<p>Support Website is at https://www.php-nuke-titanium.86it.us</p>
 
 <h2>PHP-Nuke Titanium v4.0.3 Core Developers</h2>
 
