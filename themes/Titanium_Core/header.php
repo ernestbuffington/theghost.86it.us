@@ -254,9 +254,11 @@ echo '</div>';
 echo '</td>';
 echo '</tr>';
 
+global $above_marquee_left, $above_marquee_right;
+
 echo '<tr>';
-echo '<td class="abovemarqueeLT"><span style="color:#16a085"><strong>Welcome to TheGhost\'s Online Humble Abode, Enjoy Your Visit...</strong></span></td>';
-echo '<td class="abovemarqueeRT"><span style="color:#16a085"><strong>This is the Sponsor Tron for the PHP-Nuke Titanium Project...</strong></span></td>';
+echo '<td class="abovemarqueeLT">'.$above_marquee_left.'</td>';
+echo '<td class="abovemarqueeRT">'.$above_marquee_right.'</td>';
 echo '</tr>';
 
 echo '<tr>';
