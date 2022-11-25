@@ -1,0 +1,473 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.7
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Oct 20, 2022 at 09:00 AM
+-- Server version: 10.2.44-MariaDB
+-- PHP Version: 7.4.30
+
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `dev4_402`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titanium_autonews`
+--
+
+DROP TABLE IF EXISTS `titanium_autonews`;
+CREATE TABLE `titanium_autonews` (
+  `anid` int(10) UNSIGNED NOT NULL,
+  `catid` int(11) NOT NULL DEFAULT 0,
+  `aid` varchar(30) COLLATE utf8_bin NOT NULL,
+  `title` varchar(80) COLLATE utf8_bin NOT NULL,
+  `datePublished` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `dateModified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `hometext` text COLLATE utf8_bin NOT NULL,
+  `bodytext` text COLLATE utf8_bin NOT NULL,
+  `topic` int(11) NOT NULL DEFAULT 1,
+  `informant` varchar(40) COLLATE utf8_bin NOT NULL,
+  `notes` text COLLATE utf8_bin NOT NULL,
+  `ihome` tinyint(4) NOT NULL DEFAULT 0,
+  `alanguage` varchar(30) COLLATE utf8_bin NOT NULL,
+  `acomm` tinyint(4) NOT NULL DEFAULT 0,
+  `associated` text COLLATE utf8_bin NOT NULL,
+  `ticon` tinyint(1) NOT NULL DEFAULT 0,
+  `writes` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titanium_blocks`
+--
+
+DROP TABLE IF EXISTS `titanium_blocks`;
+CREATE TABLE `titanium_blocks` (
+  `bid` int(11) NOT NULL,
+  `bkey` varchar(15) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `title` varchar(60) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `content` text COLLATE utf8_bin NOT NULL,
+  `url` varchar(200) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `bposition` char(1) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `weight` int(11) NOT NULL DEFAULT 1,
+  `active` int(11) NOT NULL DEFAULT 1,
+  `refresh` int(11) NOT NULL DEFAULT 0,
+  `time` varchar(14) COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `blanguage` varchar(30) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `blockfile` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `view` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `titanium_blocks`
+--
+
+INSERT INTO `titanium_blocks` VALUES(2, '', 'Search', '', '', 'l', 2, 1, 3600, '', '', 'block-Search.php', '0');
+INSERT INTO `titanium_blocks` VALUES(3, '', 'Survey', '', '', 'r', 7, 0, 3600, '', '', 'block-Survey.php', '0');
+INSERT INTO `titanium_blocks` VALUES(4, '', 'Information', '<br /><center><span class=\"content\">\r\n<a href=\"http://phpnuke.org\"><img src=\"images/powered/powered8.jpg\" border=\"0\" alt=\"Powered by PHP-Nuke\" title=\"Powered by PHP-Nuke\" width=\"88\" height=\"31\" /></a>\r\n<br /><br />\r\n<a href=\"http://validator.w3.org/check/referer\"><img src=\"images/html401.gif\" width=\"88\" height=\"31\" alt=\"Valid HTML 4.01!\" title=\"Valid HTML 4.01!\" border=\"0\" /></a>\r\n<br /><br />\r\n<a href=\"http://jigsaw.w3.org/css-validator\"><img src=\"images/css.gif\" width=\"88\" height=\"31\" alt=\"Valid CSS!\" title=\"Valid CSS!\" border=\"0\" /></a></span></center><br />', '', 'r', 8, 0, 0, '', '', '', '0');
+INSERT INTO `titanium_blocks` VALUES(5, '', 'User Info', '', '', 'r', 0, 1, 0, '', '', 'block-Evo_User_Info.php', '0');
+INSERT INTO `titanium_blocks` VALUES(8, '', 'Top 10 Links', '', '', 'r', 5, 1, 3600, '', '', 'block-Top10_Links.php', '0');
+INSERT INTO `titanium_blocks` VALUES(9, '', 'Forums', '', '', 'c', 1, 1, 3600, '', '', 'block-Forums.php', '0');
+INSERT INTO `titanium_blocks` VALUES(10, '', 'Submissions', '', '', 'l', 1, 1, 0, '', '', 'block-Submissions.php', '4');
+INSERT INTO `titanium_blocks` VALUES(11, '', 'Link-us', '', '', 'l', 4, 1, 3600, '0', '', 'block-Link-us.php', '1');
+INSERT INTO `titanium_blocks` VALUES(12, '', 'Shout Box', '', '', 'l', 3, 1, 3600, '0', '', 'block-Shout_Box.php', '1');
+INSERT INTO `titanium_blocks` VALUES(14, '', 'Donations', '', '', 'r', 6, 0, 3600, '0', '', 'block-Donations.php', '0');
+INSERT INTO `titanium_blocks` VALUES(15, '', 'Arcade Center', '', '', 'c', 0, 0, 3600, '0', '', 'block-Arcade.php', '1');
+INSERT INTO `titanium_blocks` VALUES(36, '', 'Portal Visits', '', '', 'l', 6, 1, 3600, '0', '', 'block-Total_Hits.php', '1');
+INSERT INTO `titanium_blocks` VALUES(17, '', 'Sentinel Portal Security', '', '', 'd', 0, 1, 3600, '0', '', 'block-Sentinel_Center.php', '1');
+INSERT INTO `titanium_blocks` VALUES(18, '', 'Select Theme', '', '', 'r', 2, 1, 3600, '0', '', 'block-Titanium_Themes.php', '1');
+INSERT INTO `titanium_blocks` VALUES(21, '', 'Honey Pot', '', '', 'r', 3, 1, 3600, '0', '', 'block-Honey_Pot.php', '1');
+INSERT INTO `titanium_blocks` VALUES(23, '', 'Unwell', '', '', 'c', 3, 0, 3600, '0', '', 'block-Thank_You.php', '1');
+INSERT INTO `titanium_blocks` VALUES(30, '', 'Portal Menu', '', '', 'l', 0, 1, 3600, '0', '', 'block-Titanium_Portal_Menu.php', '1');
+INSERT INTO `titanium_blocks` VALUES(29, '', 'Reviews', '', '', 'r', 9, 0, 3600, '0', '', 'block-Reviews.php', '1');
+INSERT INTO `titanium_blocks` VALUES(31, '', 'Visitor Log', '', '', 'r', 1, 0, 3600, '0', '', 'block-Titanium_Visitor_Log.php', '1');
+INSERT INTO `titanium_blocks` VALUES(32, '', 'Server Info', '', '', 'r', 4, 1, 3600, '0', '', 'block-Portal-Information.php', '1');
+INSERT INTO `titanium_blocks` VALUES(34, '', 'Visitor Log', '', '', 'c', 2, 1, 3600, '0', '', 'block-Titanium_Visitor_Log_Center.php', '1');
+INSERT INTO `titanium_blocks` VALUES(35, '', 'FB Chat', '', '', 'l', 5, 0, 3600, '0', '', 'block-Facebook_Chat_Plugin.php', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titanium_link_us`
+--
+
+DROP TABLE IF EXISTS `titanium_link_us`;
+CREATE TABLE `titanium_link_us` (
+  `id` int(255) NOT NULL,
+  `site_name` varchar(60) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `site_url` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `site_image` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `site_description` text COLLATE utf8_bin NOT NULL,
+  `site_hits` int(10) NOT NULL DEFAULT 0,
+  `site_status` int(1) NOT NULL DEFAULT 0,
+  `date_added` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `button_type` smallint(1) NOT NULL DEFAULT 0,
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `user_name` varchar(60) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `user_email` varchar(60) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `user_ip` varchar(20) COLLATE utf8_bin NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `titanium_link_us`
+--
+
+INSERT INTO `titanium_link_us` VALUES(1, 'Headshotdomain', 'https://www.headshotdomain.net', 'images/evo/headshotdomain.gif', '[HSX] is a multi gaming clan that is involved with a bunch of games and our library is always adding new games.<br />\n<br />\nWe are a bunch of people that just like to hang out and have fun playing games.\n\n<p>CoRpSE has a Twitch channel you might want to check out as well, their should be link on his website that will show you where his Twitch channel is and when he is streaming live.</p>', 33, 1, '1542823866', 1, 2, '', '', '82.5.206.228');
+INSERT INTO `titanium_link_us` VALUES(2, 'Lonestar Modules', 'https://lonestar-modules.com', 'images/evo/lonestarmodules.gif', 'Coding quality Block & Modules for Nuke Evolution Xtreme & Raven Nuke CMS.', 30, 1, '1542823990', 1, 2, 'Administrator', '', '82.5.206.228');
+INSERT INTO `titanium_link_us` VALUES(3, 'ViZual DeZinez', 'https://vizual-dezinez.86it.us', 'images/evo/vd88x31.gif', 'Web Design and Development. We design and code custom addons, themes, blocks, modules, banners and more.', 36, 1, '1542824042', 1, 2, 'Administrator', '', '82.5.206.228');
+INSERT INTO `titanium_link_us` VALUES(4, 'Mega Portal', 'http://www.megasportal.co.uk', 'images/evo/megasportal.gif', 'Custom graphic designs and more.', 28, 1, '1542824429', 1, 2, 'Administrator', '', '82.5.206.228');
+INSERT INTO `titanium_link_us` VALUES(7, 'The 86it Developers Network', 'https://www.86it.us', 'modules/Link_Us/buttons/button.png', 'A Programming Skills Sharing Network', 24, 1, '1661790540', 1, 3, '', '', '47.206.216.196');
+INSERT INTO `titanium_link_us` VALUES(9, 'PHP-Nuke Titanium Developer Website!', 'https://php-nuke-titanium.86it.us', 'modules/Link_Us/buttons/button.png', 'Developer website for&nbsp; US version of&nbsp;PHP-Nuke Titanium&nbsp;CMS&nbsp;is an open-source highly modified Fork of Nuke-Evolution wrote in PHP as a programming language and development was first started in 2005.\n\n<p>&nbsp;</p>\n\n<div>\n<p><img alt=\"The 86it Developers Network\" src=\"https://php-nuke-titanium.86it.us/images/banners/10.png\" title=\"The 86it Developers Network\" /></p>\n\n<div>&nbsp;</div>\n</div>', 34, 1, '1661797122', 1, 3, '', '', '47.206.216.196');
+INSERT INTO `titanium_link_us` VALUES(10, 'The Ghost\'s 86it Portal', 'https://theghost.86it.us', 'modules/Link_Us/buttons/button2.png', '', 23, 1, '1661809745', 1, 3, '', '', '47.206.216.196');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titanium_menu`
+--
+
+DROP TABLE IF EXISTS `titanium_menu`;
+CREATE TABLE `titanium_menu` (
+  `groupmenu` int(2) NOT NULL DEFAULT 0,
+  `name` varchar(200) COLLATE utf8_bin DEFAULT NULL,
+  `image` varchar(99) COLLATE utf8_bin DEFAULT NULL,
+  `lien` text COLLATE utf8_bin DEFAULT NULL,
+  `hr` char(2) COLLATE utf8_bin DEFAULT NULL,
+  `bgcolor` tinytext COLLATE utf8_bin DEFAULT NULL,
+  `invisible` int(1) NOT NULL DEFAULT 0,
+  `class` varchar(25) COLLATE utf8_bin DEFAULT 'categories',
+  `bold` char(2) COLLATE utf8_bin DEFAULT NULL,
+  `new` char(2) COLLATE utf8_bin DEFAULT NULL,
+  `days` varchar(8) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `titanium_menu`
+--
+
+INSERT INTO `titanium_menu` VALUES(1, 'Blogs Menu', 'flourecent_module_page_05.png', '', 'on', '', 0, 'categories', '', '', '');
+INSERT INTO `titanium_menu` VALUES(2, 'Community', 'babyblue_module_page_05.png', '', '', '', 0, 'categories', 'on', '', '');
+INSERT INTO `titanium_menu` VALUES(3, '86it Community', 'yellow_module_page_05.png', '', '', '', 0, 'categories', 'on', '', '');
+INSERT INTO `titanium_menu` VALUES(4, 'Google Tool Box', 'Image1_page_05.png', '', '', '', 0, 'categories', 'on', '', '');
+INSERT INTO `titanium_menu` VALUES(5, 'PHP Tool Box', 'babyblue_toolbox_page_05.png', '', '', '', 0, 'categories', 'on', '', '');
+INSERT INTO `titanium_menu` VALUES(6, 'CSS Tool Box', 'purple_toolbox_page_05.png', '', '', '', 0, 'categories', 'on', '', '');
+INSERT INTO `titanium_menu` VALUES(7, 'Java Tool Box', 'yellow_toolbox_page_05.png', '', '', '', 0, 'categories', 'on', '', '');
+INSERT INTO `titanium_menu` VALUES(99, NULL, NULL, NULL, NULL, NULL, 0, 'categories', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titanium_menu_categories`
+--
+
+DROP TABLE IF EXISTS `titanium_menu_categories`;
+CREATE TABLE `titanium_menu_categories` (
+  `id` int(11) NOT NULL,
+  `sublevel` tinyint(3) NOT NULL DEFAULT 0,
+  `groupmenu` int(2) NOT NULL DEFAULT 0,
+  `module` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `url` text COLLATE utf8_bin NOT NULL,
+  `url_text` text COLLATE utf8_bin NOT NULL,
+  `image` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `new` char(2) COLLATE utf8_bin DEFAULT '3',
+  `new_days` tinyint(4) NOT NULL DEFAULT -1,
+  `class` varchar(20) COLLATE utf8_bin DEFAULT 'modules',
+  `bold` char(2) COLLATE utf8_bin DEFAULT NULL,
+  `days` varchar(8) COLLATE utf8_bin NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `titanium_menu_categories`
+--
+
+INSERT INTO `titanium_menu_categories` VALUES(3584, 0, 1, 'Blogs', '', '', 'tree-greenT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3585, 0, 1, 'Blog_Topics', '', '', 'tree-greenT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3586, 0, 1, 'Blogs_Top', '', '', 'tree-greenT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3587, 0, 1, 'Blog_Archives', '', '', 'tree-greenT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3588, 0, 1, 'Blog_Submit', '', '', 'tree-green-L.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3589, 0, 2, 'Forums', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3590, 0, 2, 'Groups', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3591, 0, 2, 'Members_List', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3592, 0, 2, 'File_Repository', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3593, 0, 2, 'Shout_Box', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3594, 0, 2, 'Loan_Amortization', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3595, 0, 2, 'Link_Us', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3596, 0, 2, 'Web_Links', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3597, 0, 2, 'ECalendar', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3598, 0, 2, 'Reviews', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3599, 0, 2, 'Surveys', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3600, 0, 2, 'Statistics', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3601, 0, 2, 'FAQ', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3602, 0, 2, 'Feedback', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3603, 0, 2, 'Recommend_Us', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3604, 0, 2, 'Advertising', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3605, 0, 2, 'Google-Site-Map', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3606, 0, 2, 'Docs', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3607, 0, 2, 'Search', '', '', 'tree-lightblue-L.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3608, 0, 3, 'Network', '', '', 'tree-yellowT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3609, 0, 3, 'Network_Projects', '', '', 'tree-yellowT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3610, 0, 3, 'Network_Advertising', '', '', 'tree-yellowT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3611, 0, 3, 'Donations', '', '', 'tree-yellow-L.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3612, 0, 4, 'External Link', 'https://www.google.com/webmasters/markup-helper/', 'Markup Helper', 'tree-T.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3613, 0, 4, 'External Link', 'https://developers.google.com/youtube/iframe_api_reference', 'YouTube API', 'tree-T.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3614, 0, 4, 'External Link', 'https://github.com/googleapis/google-api-php-client', 'api-php-client', 'tree-T.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3615, 0, 4, 'External Link', 'https://www.google.com/recaptcha/admin', 'reCAPTCHA', 'tree-T.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3616, 0, 4, 'External Link', 'https://google.dev/', 'Dev Profile', 'tree-L.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3617, 0, 5, 'HTML_to_PHP', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3618, 0, 5, 'Titanium_SandBox', '', '', 'tree-lightblueT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3619, 0, 5, 'External Link', 'https://codecollab.io/app', 'CodeCollab', 'tree-lightblue-L.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3620, 0, 6, 'External Link', 'https://codepen.io/ProfessorSamoff/pen/QQrPPy', 'RealTime CSS', 'tree-pinkT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3621, 0, 6, 'CSS_Reference', '', '', 'tree-pinkT.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3622, 0, 6, 'CSS_Color_Chart', '', '', 'tree-pink-L.png', '', 3, 'modules', 'on', '');
+INSERT INTO `titanium_menu_categories` VALUES(3623, 0, 7, 'External Link', 'https://codecollab.io/', 'CodeCallab', 'tree-yellow-L.png', '', 3, 'modules', 'on', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titanium_modules`
+--
+
+DROP TABLE IF EXISTS `titanium_modules`;
+CREATE TABLE `titanium_modules` (
+  `mid` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8_bin NOT NULL,
+  `custom_title` varchar(255) COLLATE utf8_bin NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT 0,
+  `view` tinyint(4) NOT NULL DEFAULT 0,
+  `inmenu` tinyint(4) NOT NULL DEFAULT 1,
+  `pos` tinyint(4) NOT NULL DEFAULT 0,
+  `cat_id` tinyint(4) NOT NULL DEFAULT 0,
+  `blocks` tinyint(4) NOT NULL DEFAULT 1,
+  `admins` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `groups` varchar(50) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `titanium_modules`
+--
+
+INSERT INTO `titanium_modules` VALUES(1, 'Forums', 'Forums', 1, 1, 1, 3, 3, 0, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(2, 'File_Repository', 'File Repository', 1, 6, 1, 0, 5, 3, '', '3');
+INSERT INTO `titanium_modules` VALUES(3, 'Your_Account', 'Your Account', 1, 0, 1, 3, 2, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(4, 'Shout_Box', 'Shout Box', 1, 1, 1, 5, 3, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(5, 'Advertising', 'Advertising', 1, 1, 1, 22, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(6, 'ECalendar', 'ECalendar', 1, 1, 1, 21, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(8, 'Docs', 'Disclaimer', 1, 1, 1, 23, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(9, 'Donations', 'Donations', 1, 1, 1, 1, 3, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(10, 'Evo_UserBlock', 'Evo UserBlock', 1, 0, 1, 27, 7, 1, '', '');
+INSERT INTO `titanium_modules` VALUES(11, 'FAQ', 'FAQ', 1, 6, 1, 26, 7, 3, '', '3');
+INSERT INTO `titanium_modules` VALUES(12, 'Feedback', 'Feedback', 1, 6, 1, 2, 3, 3, '', '3');
+INSERT INTO `titanium_modules` VALUES(13, 'Groups', 'Member Groups', 1, 6, 1, 4, 3, 3, '', '3');
+INSERT INTO `titanium_modules` VALUES(14, 'HTML_Newsletter', 'HTML Newsletter', 1, 6, 1, 25, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(15, 'Link_Us', 'Link Us', 1, 1, 1, 24, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(16, 'Members_List', 'Members List', 1, 1, 1, 0, 2, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(18, 'NukeSentinel', 'NukeSentinel', 1, 6, 1, 20, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(19, 'Private_Messages', 'Private Messages', 1, 3, 1, 2, 2, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(20, 'Profile', 'Profile', 1, 0, 1, 1, 2, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(21, 'Recommend_Us', 'Recommend Us', 1, 1, 1, 17, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(22, 'Reviews', 'Reviews', 1, 6, 1, 16, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(23, 'Search', 'Search', 1, 1, 1, 15, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(25, 'Spambot_Killer', 'Spambot Killer', 1, 1, 1, 14, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(26, 'Statistics', 'Statistics', 1, 1, 1, 18, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(30, 'Surveys', 'Surveys', 1, 1, 1, 19, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(33, 'Web_Links', 'Web Links', 1, 1, 1, 1, 5, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(34, 'Image_Repository', 'Image Repository', 1, 3, 1, 0, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(39, 'Blog_Submit', 'Blog Submit', 1, 1, 1, 4, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(41, 'Blog_Topics', 'Blog Topics', 1, 1, 1, 6, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(45, 'Network', 'Network Disclaimer', 1, 1, 1, 8, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(48, 'cPanel_Login', 'cPanel Login', 1, 6, 1, 10, 7, 3, '', '5');
+INSERT INTO `titanium_modules` VALUES(51, 'Google-Site-Map', 'Google Site Map', 1, 1, 1, 11, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(52, 'Network_Advertising', 'Network Advertising', 1, 1, 1, 12, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(14713, 'CSS_Color_Chart', 'CSS Color Chart', 1, 6, 1, 0, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(14714, 'CSS_Reference', 'CSS Reference', 1, 6, 1, 0, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(14717, 'Proof_Of_God', 'Proof Of God', 1, 6, 1, 0, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(14718, 'Titanium_SandBox', 'Titanium SandBox', 1, 1, 1, 0, 7, 0, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(14836, 'Arcade_Tweaks', 'Arcade Tweaks', 1, 6, 1, 0, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(14837, 'CHANGELOG', 'CHANGELOG', 1, 6, 1, 0, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(14838, 'HTML_to_PHP', 'HTML to PHP', 1, 6, 1, 0, 7, 3, '', '4');
+INSERT INTO `titanium_modules` VALUES(14840, 'Q_A', 'Q & A', 1, 6, 1, 0, 7, 3, '', '5');
+INSERT INTO `titanium_modules` VALUES(14841, 'Bookmarks', 'Bookmarks', 1, 1, 1, 0, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(14842, 'Cemetery', 'Cemetery', 1, 1, 1, 0, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(14843, 'Loan_Amortization', 'Loan Amortization', 1, 1, 1, 0, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(14844, 'Network_Projects', 'Network Projects', 1, 1, 1, 0, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(14845, 'phpBB3', 'phpBB3', 1, 6, 1, 0, 7, 3, '', '5');
+INSERT INTO `titanium_modules` VALUES(14852, 'My_Forum_Topics', 'My Forum Topics', 1, 1, 1, 0, 7, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(15501, 'Blog_Archives', 'Blog Archives', 1, 1, 1, 0, 0, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(15502, 'Blogs', 'Blogs', 1, 0, 1, 0, 0, 3, '', 'Array');
+INSERT INTO `titanium_modules` VALUES(15503, 'Blogs_Top', 'Blogs Top 10', 1, 1, 1, 0, 0, 3, '', 'Array');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titanium_modules_cat`
+--
+
+DROP TABLE IF EXISTS `titanium_modules_cat`;
+CREATE TABLE `titanium_modules_cat` (
+  `cid` int(10) UNSIGNED NOT NULL,
+  `name` varchar(30) COLLATE utf8_bin NOT NULL,
+  `image` text COLLATE utf8_bin NOT NULL,
+  `pos` tinyint(4) NOT NULL DEFAULT 0,
+  `link_type` tinyint(4) NOT NULL DEFAULT 0,
+  `link` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `titanium_modules_cat`
+--
+
+INSERT INTO `titanium_modules_cat` VALUES(1, 'Home', 'home.png', 0, 2, 'index.php');
+INSERT INTO `titanium_modules_cat` VALUES(2, 'Members', 'members.png', 1, 0, '');
+INSERT INTO `titanium_modules_cat` VALUES(3, 'Community', 'community.png', 2, 0, '');
+INSERT INTO `titanium_modules_cat` VALUES(4, 'Statistics', 'poll.png', 3, 0, '');
+INSERT INTO `titanium_modules_cat` VALUES(5, 'Files &amp; Links', 'web.png', 4, 0, '');
+INSERT INTO `titanium_modules_cat` VALUES(6, 'News', 'news.png', 5, 0, '');
+INSERT INTO `titanium_modules_cat` VALUES(7, 'Other', 'general.png', 6, 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titanium_users_who_been`
+--
+
+DROP TABLE IF EXISTS `titanium_users_who_been`;
+CREATE TABLE `titanium_users_who_been` (
+  `user_ID` int(11) NOT NULL DEFAULT 0,
+  `username` varchar(25) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `last_visit` int(15) DEFAULT NULL,
+  `resolution` varchar(50) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `titanium_users_who_been`
+--
+
+INSERT INTO `titanium_users_who_been` VALUES(2, 'webmaster', 1664765034, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(3, 'TheGhost', 1666268523, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(4, 'NukeSheriff', 1666210113, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(5, 'UniKCode', 1661656717, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(6, 'CodeBuzzard', 1666230239, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(7, 'Cobalt74', 1662108220, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(8, 'ScottyBcoder', 1662133010, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(9, 'JohnnieRotten', 1662109227, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(10, 'MuhLeeZah', 1662133250, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(11, 'Allen-Scott', 1662134539, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(12, 'Shakey', 1662135074, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(13, 'YuckFou', 1664574115, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(14, 'Lucifer', 1664325654, '');
+INSERT INTO `titanium_users_who_been` VALUES(15, 'KungFuJew', 1662260973, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(16, 'ICEMAN', 1662268205, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(17, 'Feyenoorddesign', 1664847031, '424x753');
+INSERT INTO `titanium_users_who_been` VALUES(18, 'AllenScott', 1666012621, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(19, 'PedaFrank', 1666178479, '2560x1440');
+INSERT INTO `titanium_users_who_been` VALUES(20, 'SuperCat', 1665865107, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(21, 'CyBorg', 1666207966, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(22, 'php-nuke-titanium', 1666042425, '1920x1080');
+INSERT INTO `titanium_users_who_been` VALUES(23, 'Trowbie1958', 1666230244, '3840x1600');
+INSERT INTO `titanium_users_who_been` VALUES(24, 'Talryn', 1666223447, '2294x960');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `titanium_autonews`
+--
+ALTER TABLE `titanium_autonews`
+  ADD PRIMARY KEY (`anid`),
+  ADD UNIQUE KEY `anid` (`anid`);
+
+--
+-- Indexes for table `titanium_blocks`
+--
+ALTER TABLE `titanium_blocks`
+  ADD PRIMARY KEY (`bid`),
+  ADD KEY `title` (`title`);
+
+--
+-- Indexes for table `titanium_link_us`
+--
+ALTER TABLE `titanium_link_us`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `titanium_menu`
+--
+ALTER TABLE `titanium_menu`
+  ADD PRIMARY KEY (`groupmenu`);
+
+--
+-- Indexes for table `titanium_menu_categories`
+--
+ALTER TABLE `titanium_menu_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `titanium_modules`
+--
+ALTER TABLE `titanium_modules`
+  ADD PRIMARY KEY (`mid`),
+  ADD UNIQUE KEY `mid` (`mid`),
+  ADD KEY `title` (`title`),
+  ADD KEY `custom_title` (`custom_title`);
+
+--
+-- Indexes for table `titanium_modules_cat`
+--
+ALTER TABLE `titanium_modules_cat`
+  ADD PRIMARY KEY (`cid`),
+  ADD UNIQUE KEY `cid` (`cid`);
+
+--
+-- Indexes for table `titanium_users_who_been`
+--
+ALTER TABLE `titanium_users_who_been`
+  ADD PRIMARY KEY (`user_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `titanium_autonews`
+--
+ALTER TABLE `titanium_autonews`
+  MODIFY `anid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `titanium_blocks`
+--
+ALTER TABLE `titanium_blocks`
+  MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `titanium_link_us`
+--
+ALTER TABLE `titanium_link_us`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `titanium_menu_categories`
+--
+ALTER TABLE `titanium_menu_categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3624;
+
+--
+-- AUTO_INCREMENT for table `titanium_modules`
+--
+ALTER TABLE `titanium_modules`
+  MODIFY `mid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18571;
+
+--
+-- AUTO_INCREMENT for table `titanium_modules_cat`
+--
+ALTER TABLE `titanium_modules_cat`
+  MODIFY `cid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
