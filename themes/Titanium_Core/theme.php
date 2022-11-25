@@ -70,7 +70,8 @@ define('THEME_DOWNLOAD_LINK', $theme_download_link);
 #--------------------------#
 
 # your admin id - this will normally be 2 Set this to the MAIN ADMIN NUMBER
-$portaladmin = 3;
+global $portaladmin;
+$portaladmin = 2;
 echo "<!-- Setting MAIN ADMIN TO ".$portaladmin." in themes/".$theme_name."/theme.php -->\n";
 
 /*
