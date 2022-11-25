@@ -1,6 +1,6 @@
 <a href="https://www.php-nuke-titanium.86it.us" rel="nofollow"><img src="/images/github/github_rip_open2.png" alt="PHP-NUke Titanium" style="max-width: 100%;"></a>
 
-<h2>Changes at TheGhost's Online Humble Abode - PHP-Nuke Titanium v4.0.3</h2>
+<h2>TheGhost's Online Humble Abode - PHP-Nuke Titanium v4.0.3</h2>
 <p>TheGhost's Website https://www.theghost.86it.us <-(This Code Running Live) SIGN UP AND CHECK IT OUT!!!</p>
 
 
