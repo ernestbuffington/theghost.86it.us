@@ -662,7 +662,7 @@ td.abovemarqueeRT
 {
   table-layout: auto;
   width: 25%;
-  height:60px;
+  height:30px;
   border-collapse: collapse;
   padding-top: 0px;
   padding-bottom: 5px !important;
@@ -673,23 +673,6 @@ td.abovemarqueeRT
   text-align: center !important;
   vertical-align: bottom;
   font: bold 13px Georgia, sans-serif;
-}
-
-
-td.abovemarqueeRT
-{
-  table-layout: auto;
-  width: 25%;
-  height: 30px;
-  border-collapse: collapse;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  border-spacing: 0px;
-  background-color: transparent;
-  text-align: left;
-  vertical-align: bottom;
 }
 
 /*
