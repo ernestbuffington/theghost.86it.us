@@ -619,6 +619,10 @@ echo "<!-- END Titanium Portal Menu Javascript Functions v1.0 -->\n\n";
 		                       $som_hr = $row['hr'];
 		                   $som_center = $row['center'];
 		                  $som_bgcolor = $row['bgcolor'];
+						  
+						  if(empty($som_bgcolor))
+						  $som_bgcolor = 'transparent;';
+						  
 		    $invisible[$classpointer] = $row['invisible'];
 		$categoryclass[$classpointer] = $row['class'];
 		                     $som_bold = $row['bold'];
