@@ -1,6 +1,6 @@
 <?php
 if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])): 
-exit('Access Denied');
+  exit('Access Denied');
 endif;
 
              global $locked_width, 
@@ -25,6 +25,7 @@ endif;
         $make_xtreme_avatar_small,
                  $poweredby_color,
 	           $menu_image_height,
+			    $side_block_width,
                               $db;
 
 $theme_name = basename(dirname(__FILE__));
@@ -38,6 +39,9 @@ include(NUKE_THEMES_DIR.$theme_name.'/theme_info.php');
 //$locked_width = "1633px"; is as small as this theme can go without messing things up
 $locked_width = "1840px";
 echo "<!-- Setting locked THEME width to ".$locked_width," in themes/".$theme_name."/theme.php -->\n";
+
+$side_block_width = "295px";
+echo "<!-- Setting Side Block THEME width to ".$side_block_width," in themes/".$theme_name."/theme.php -->\n";
 
 $theme_business = 'Brandon Maintenance Management, LLC';
 echo "<!-- Setting THEME Business to ".$theme_business," in themes/".$theme_name."/theme.php -->\n";
@@ -71,11 +75,11 @@ define('THEME_DOWNLOAD_LINK', $theme_download_link);
 
 # your admin id - this will normally be 2 Set this to the MAIN ADMIN NUMBER
 global $portaladmin, $above_marquee_left, $above_marquee_right;
-$portaladmin = 2;
-echo "<!-- Setting MAIN ADMIN TO ".$portaladmin." in themes/".$theme_name."/theme.php -->\n"; 
+$portaladmin = 3;
+echo "<!-- Setting MAIN ADMIN TO ".$portaladmin." in themes/".$theme_name."/theme.php -->\n";
+$above_marquee_left = '<span style="color:#b8a265"><strong>Welcome to PHP-Nuke Titanium, Please Enjoy Your Visit...</strong></span>';
+$above_marquee_right = '<span style="color:#b8a265"><strong>This is the Sponsor Tron for the PHP-Nuke Titanium Project...</strong></span>';
 
-$above_marquee_left = '<span style="color:#16a085"><strong>Welcome to TheGhost\'s Online Humble Abode, Enjoy Your Visit...</strong></span>';
-$above_marquee_right = '<span style="color:#16a085">This is the Sponsor Tron for the PHP-Nuke Titanium Project...</strong></span>';
 /*
     list($portaladminname, 
 	              $avatar, 

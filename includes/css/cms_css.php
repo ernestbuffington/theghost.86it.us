@@ -1,7 +1,7 @@
 <?php
 echo "/* includes/css/cms_css.php Fly Kit for PHP-Nuke Titanium - Design Themes On The Fly */\n"; 
 echo "/* When we are done we will move this code to style.css */\n";
-global $ThemeSel, $br, $fieldset_color, $fieldset_border_width, $digits_color, $poweredby_color;
+global $ThemeSel, $br, $fieldset_color, $fieldset_border_width, $digits_color, $poweredby_color, $poweredby_hover_color;
 $br = '<div align="center" style="padding-top:2px;"></div>';
 ?>
 /**
@@ -309,7 +309,7 @@ table.rounded-corners>tfoot:not(:last-child) {
 }
 
 .poweredby:focus {
-  color: white;
+  color: <?=$poweredby_hover_color?>;
   font-size: 12px;
   text-decoration: none;
   padding: 4px;
@@ -320,7 +320,7 @@ table.rounded-corners>tfoot:not(:last-child) {
 }
 
 .poweredby:hover {
-  color: white;
+  color: <?=$poweredby_hover_color?>;
   font-size: 12px;
   text-decoration: none;
   padding: 4px;
@@ -826,6 +826,12 @@ img.rounded-corners-user-info {
 img.rounded-corners-arcade-center_block {
   border-radius: 9px;
   width: 80px; 
+}
+
+
+img.rounded-corners-usercp_register {
+  border-radius: 9px;
+  width: 150px; 
 }
 
 /*

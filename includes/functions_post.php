@@ -221,7 +221,7 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
                 if(!empty($poll_options))
                 {
                         $temp_option_text = array();
-                        while(list($option_id, $option_text) = @each($poll_options))
+						foreach ($poll_options as $option_id => $option_text)
                         {
                                 $option_text = trim($option_text);
                                 if (!empty($option_text))
@@ -322,6 +322,9 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
         {
                 remove_search_post($post_id);
         }
+
+        if(!isset($post_data['edit_vote']))
+        $post_data['edit_vote'] = '';
 
         if ($mode == 'newtopic' || ($mode == 'editpost' && $post_data['first_post']))
         {
@@ -495,10 +498,10 @@ if ($mode == 'newtopic')
                         $poll_id = $db->sql_nextid();
                 }
 
-                @reset($poll_options);
+                reset($poll_options);
 
                 $poll_option_id = 1;
-                while (list($option_id, $option_text) = each($poll_options))
+				foreach ($poll_options as $option_id => $option_text)
                 {
                         if (!empty($option_text))
                         {
@@ -738,7 +741,10 @@ function delete_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
                 {
                         if ($post_data['first_post'])
                         {
-                                $forum_update_sql .= ', forum_topics = forum_topics - 1';
+                         
+                                $forum_update_sql = '';
+
+						        $forum_update_sql .= ', forum_topics = forum_topics - 1';
                                 $sql = "DELETE FROM " . TOPICS_TABLE . "
                                         WHERE topic_id = '$topic_id'
                                                 OR topic_moved_id = '$topic_id'";
@@ -894,7 +900,7 @@ function user_notification($mode, &$post_data, &$topic_title, &$forum_id, &$topi
                                       $attachment ="\n------------------------------------------------------------------\n";
                                 }
                                 // Sixty second limit
-                                @set_time_limit(60);
+                                set_time_limit(60);
 
                                 do
                                 {
@@ -912,12 +918,12 @@ function user_notification($mode, &$post_data, &$topic_title, &$forum_id, &$topi
                                 //
                                 if (preg_match('/[c-z]:\\\.*/i', getenv('PATH')) && !$board_config['smtp_delivery'])
                                 {
-                                        $ini_val = (@phpversion() >= '4.0.0') ? 'ini_get' : 'get_cfg_var';
+                                        $ini_val = (phpversion() >= '4.0.0') ? 'ini_get' : 'get_cfg_var';
 
                                         // We are running on windows, force delivery to use our smtp functions
                                         // since php's are broken by default
                                         $board_config['smtp_delivery'] = 1;
-                                        $board_config['smtp_host'] = @$ini_val('SMTP');
+                                        $board_config['smtp_host'] = $ini_val('SMTP');
                                 }
 
                                 if (count($bcc_list_ary))
@@ -933,9 +939,11 @@ function user_notification($mode, &$post_data, &$topic_title, &$forum_id, &$topi
                                     obtain_word_list($orig_word, $replacement_word);
 
                                     $topic_title = (count($orig_word)) ? preg_replace($orig_word, $replacement_word, unprepare_message($topic_title)) : unprepare_message($topic_title);
-
-                                    @reset($bcc_list_ary);
-                                    @reset($user_name);
+                                    
+									if (isset($bcc_list_ary))
+                                    reset($bcc_list_ary);
+                                    if (isset($user_name))
+									reset($user_name);
 
                                     $notify_body_pattern    = array(
                                         '{USERNAME}',
@@ -991,7 +999,7 @@ function user_notification($mode, &$post_data, &$topic_title, &$forum_id, &$topi
                                     $content = str_replace( '{U_STOP_WATCHING_TOPIC}', '<a href="'.$email_data['stop_watching'].'">'.$email_data['stop_watching'].'</a>', $content );
                                     $content = str_replace( '{EMAIL_SIG}', $email_data['signature'], $content );
 
-                                    while (list($user_lang, $bcc_list) = each($bcc_list_ary))
+									foreach ($bcc_list_ary as $user_lang => $bcc_list)
                                     {
                                         $name_list = $user_name[$user_lang];
                                         $headers[] = 'From: '.$email_data['from'];
@@ -1002,7 +1010,7 @@ function user_notification($mode, &$post_data, &$topic_title, &$forum_id, &$topi
 
                                         $headers[] = 'Reply-To: '.$email_data['reply_to'];
                                         $headers[] = 'Content-Type: '.$email_data['content_type'].'; charset='.$email_data['charset'];
-                                        evo_phpmailer( $addbcc, $email_data['subject'], $content, $headers );
+                                        phpmailer( $addbcc, $email_data['subject'], $content, $headers );
                                     }
                                 }
                         }
@@ -1112,7 +1120,10 @@ function generate_smilies($mode, $page_id)
                         $row = 0;
                         $col = 0;
 
-                        while (list($smile_url, $data) = @each($rowset))
+                        if(!isset($lang['Emoticons']))
+                        $lang['Emoticons'] = 'Emoticons';
+				        						
+						foreach ($rowset as $smile_url => $data)
                         {
                                 if (!$col)
                                 {

@@ -28,7 +28,13 @@ $config = dburow("SELECT * FROM ".$prefix."_link_us_config LIMIT 1");
 function block_Link_Us_cache($block_cachetime) 
 {
 	global $prefix;
-	if ((($blockcache = cache_load('link_us', 'blocks')) === false) 
+	
+	$blockcache = [];
+	
+	if(!isset($blockcache[0]['stat_created']))
+	$blockcache[0]['stat_created'] = '';
+	
+	if ((($blockcache = cache_load('titanium_link_us', 'blocks')) === false) 
 	|| empty($blockcache) 
 	|| intval($blockcache[0]['stat_created']) < (time() - intval($block_cachetime))) 
 	{
@@ -41,14 +47,19 @@ function block_Link_Us_cache($block_cachetime)
 		$result = dbquery($sql);
 		$blockcache = dbrowset($result);
 		dbfree($result);
-		cache_set('link_us', 'blocks', $blockcache);
+		$blockcache[0]['stat_created'] = time();
+		cache_set('titanium_link_us', 'blocks', $blockcache);
 	}
+
 	return $blockcache;
 }
 
 $blocksession = block_Link_Us_cache( get_evo_option('block_cachetime') );
 
 $settings = 'width="88" height="31" border="0"';
+
+if(!isset($site_hits))
+$site_hits = 0;
 	
 	if($config['marquee_direction'] == 1){ $direction = "up"; }
 elseif($config['marquee_direction'] == 2){ $direction = "down"; }
@@ -108,4 +119,4 @@ if($config['marquee'] == 1)
 $content .= "</marquee>";
 $content .= '</div>';
 
-?>
+

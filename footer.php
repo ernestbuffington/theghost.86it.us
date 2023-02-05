@@ -95,12 +95,12 @@ $footmsg = "<span class=\"footmsg\">\n";
 $footmsg .= '<a class="googleminds" href="modules.php?name=Google-Site-Map" target="_self"><span style="color:#4285f4">G</span><span style="color:#ea4335">o</span><span style="color:"#fbbc05">o</span><span style="color:#4285f4">g</span><span style="color:#34a853">l</span><span style="color:#ea4335">e</span> <span style="color:#4285f4">S</span><span style="color:#ea4335">i</span><span style="color:#fbbc05">t</span><span style="color:#4285f4">e</span><span style="color:#ea4335">m</span><span style="color:#34a853">a</span><span style="color:#ea4335">p</span></a><br />';
 # Google Site Map v1.0 END
 
-# footer messages from databae START
+# footer messages from database START
 if (!empty($foot1)) 
 $footmsg .= $foot1."<br/>";
 if (!empty($foot2)) 
 $footmsg .= $foot2."<br/>";
-# footer messages from databae END
+# footer messages from database END
 
 # START user clear cache updated 09/12/2019 Ernest Allen Buffington
 if($use_cache && $usrclearcache): 
@@ -117,7 +117,7 @@ endif;
 # PLAY FAIR AND SUPPORT THE DEVELOPERS, PLEASE!
 global $theme_business, $theme_title, $theme_author, $theme_date, $theme_name, $theme_download_link, $name; 
 if(($name) && $name === 'Forums'):
-$footmsg .= '<a class="poweredby" href="http://www.php-nuke-titanium.86it.us/" target="_blank">Forums Powered by phpBB Titanium v'.PHPBB_TITANIUM.' | Core &copy; 2005, 2022 phpBB Titanium Group</a><br />';
+$footmsg .= '<a class="poweredby" href="http://www.php-nuke-titanium.86it.us/" target="_blank">Forums Powered by phpBB Titanium v'.PHPBB_TITANIUM.'</a> | <a class="poweredby" href="https://www.phpbb.com/about/" target="_blank">phpBB v2.0.23 Core &copy; 2001 - 2022 phpBB Limited</a><br />';
 endif;
 
 $footmsg .= '<a class="tooltip-html copyright" href="'.$theme_download_link.'" data-toggle="modal" data-target="'.$theme_download_link.'" title="'.$theme_title; 
@@ -166,13 +166,10 @@ $total_time .= '</span></strong>';
 endif;
 # END Queries Count v2.0.1
 
-//$total_time .= ' ';
-//$total_time .= '</span>';
-
 # Auto Optimize v1.0.0 START
 if(is_admin()): 
  $first_time = false;
-  if (($last_optimize = $cache->load('last_optimize', 'config')) === false): 
+  if (!($last_optimize = $cache->load('last_optimize', 'titanium_config'))): 
    $last_optimize = time();
     $first_time = true;
   endif;			
@@ -183,7 +180,7 @@ if(is_admin()):
 	 $interval = strtotime('-1 day');
        if (($last_optimize <= $interval) || ($first_time && $cache->valid && $use_cache)):
          if ($db->sql_optimize()):
-           $cache->save('last_optimize', 'config', time());
+           $cache->save('last_optimize', 'titanium_config', time());
              $total_time .= "<br />Database Optimized";
          endif;
        endif;
@@ -233,25 +230,15 @@ endif;
 
 	global $browser;
 	
-	# with this span tag it is invisble to the main website
+	# with this span tag it is invisible to the main website
 	if ($browser == 'Bot' || $browser == 'Other') 
     {
         $footmsg .= '<span style="display:none;"><a href="includes/trap.php">Do Not Click</a></span>'.PHP_EOL;
     }
-	# with this span tag it is invisble to the main website
+	# with this span tag it is invisible to the main website
 	
 	echo $footmsg;
     $has_echoed = 1;
-
-
-echo "\n<!-- START facebook connector -->\n";
-if(defined('facebook')):
-echo '<div id="status">'.PHP_EOL;
-echo '</div>'.PHP_EOL;
-echo '<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>'.PHP_EOL;
-endif;
-echo "<!-- END facebook connector -->\n\n";
-
 }
 
 # START Admin Icon/Link Pos v1.0.0
@@ -281,7 +268,7 @@ if (defined('HOME_FILE'))
 	include(NUKE_INCLUDE_DIR.'cblocks4.php');
 }
 # END NSN Center Blocks v2.2.1
-
+global $module_name;
 # look to see if a copyright file exist for the currently displayed module START
 $pageURL = "".HTTPS."modules/".$module_name."/copyright.php";
 
@@ -295,7 +282,7 @@ if (defined('MODULE_FILE') && !defined("HOME_FILE") AND file_exists("modules/".$
 
     if ($name == 'Groups')
     {
-echo "window.open ('".HTTPS."modules/Groups/copyright.php','Copyright','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width='+w+',height='+h+', top='+top+', left='+left);\n";
+       echo "window.open ('".HTTPS."modules/Groups/copyright.php','Copyright','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width='+w+',height='+h+', top='+top+', left='+left);\n";
     }
     else
     if ($name == 'Members_List')
@@ -328,12 +315,12 @@ echo "</script>\n\n";
 }
 
 # just a  normal module load without it being displayed by default when index.php loads, look to see if a copyright file exist for the currently displayed module START
-//     $cpname = preg_replace("/_/", " ", $module_name);
-//     echo "<div align=\"right\"><a href=\"javascript:openwindow(420,200)\">$cpname &copy;</a></div>";
+#	 $cpname = preg_replace("/_/", " ", $module_name);
+#     echo "<div align=\"right\"><a href=\"javascript:openwindow(420,200)\">$cpname &copy;</a></div>";
 # just a  normal module load without it being displayed by default when index.php loads, look to see if a copyright file exist for the currently displayed module END
 
-
-# This loads the admin panel when you got the admin area START
+global $name;
+# This loads the admin panel when you goto the admin area START
 if (!defined('HOME_FILE') AND defined('MODULE_FILE') AND (file_exists(NUKE_MODULES_DIR.$name.'/admin/panel.php') && is_admin())) 
 {
     OpenTable();
@@ -364,6 +351,7 @@ echo "<!-- END Bottom Primary Body Tags -->\n\n";
 
 # ReSync the website cache!
 # Set up the cache class reference
+global $use_cache;
 $cache = new cache($use_cache);
 $cache->resync();
 
@@ -371,6 +359,7 @@ $cache->resync();
  [ Other:   DB Connectors                      v2.0.0 ]
  [ Other:   Persistent DB Connection           v2.0.0 ]
  ******************************************************/
+global $db2, $db;
 if(is_object($db))
 $db->sql_close(); //close local database
 if(is_object($db2))
@@ -381,7 +370,7 @@ $db2->sql_close(); //close network user database
  [ Other:   DB Connectors                      v2.0.0 ]
  [ Other:   Persistent DB Connection           v2.0.0 ]
  ******************************************************/
-
+global $do_gzip_compress;
 if(GZIPSUPPORT && $do_gzip_compress) 
 {
     $gzip_contents = ob_get_contents();
@@ -397,4 +386,4 @@ if(GZIPSUPPORT && $do_gzip_compress)
 }
 ob_end_flush();
 exit;
-?>
+

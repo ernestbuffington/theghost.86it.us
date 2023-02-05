@@ -1,14 +1,14 @@
 <a href="https://www.php-nuke-titanium.86it.us" rel="nofollow"><img src="/images/github/github_rip_open2.png" alt="PHP-NUke Titanium" style="max-width: 100%;"></a>
 
-<h2>TheGhost's Online Humble Abode - PHP-Nuke Titanium v4.0.3</h2>
-<p>TheGhost's Website https://www.theghost.86it.us <-(This Code Running Live) SIGN UP AND CHECK IT OUT!!!</p>
+<h2>Changes in PHP-Nuke Titanium v4.0.3</h2>
+<p>Support Website https://www.php-nuke-titanium.86it.us <-(This Code Running Live) SIGN UP AND CHECK IT OUT!!!</p>
 
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fernestbuffington%2FPHP-Nuke.Titanium.Dev.4.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fernestbuffington%2FPHP-Nuke.Titanium.Dev.4?ref=badge_shield)  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e5300f0dccdb4bcc9b7bdbc5d6e65f50)](https://www.codacy.com/gh/ernestbuffington/PHP-Nuke.Titanium.Dev.4/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ernestbuffington/PHP-Nuke.Titanium.Dev.4&amp;utm_campaign=Badge_Grade)
 
 <h2>PHP-Nuke Titanium v4.0.3 2022 Nightly Build Repo</h2>
-<p>PHP-Nuke Titanium Repo https://github.com/ernestbuffington/PHP-Nuke.Titanium.Dev.4</p>
-<p>PHP-Nuke Titanium Support Website is at https://www.php-nuke-titanium.86it.us</p>
+
+<p>This code is running live at https://www.php-nuke-titanium.86it.us</p>
 
 <h2>PHP-Nuke Titanium v4.0.3 Core Developers</h2>
 
@@ -119,20 +119,34 @@ There have been existing efforts to re-implement the Flash Player, including Gna
 <h2>PHP-Nuke Titanium v4.0.3 Test Server Information</h2>
 
 <ul>
-	<li>Apache/2.4.54</li>
-	<li>MySQL Server Version: 5.5.5-10.2.44-MariaDB (MariaDB Server) The fastest on the planet!</li>
-	<li>PHP 7.4.33 (we are working on a version for PHP 8)</li>
-	<li>cURL&nbsp;7.84.0</li>
+	<li><b>You will need Network Database Access for the Network Projects Module</b>- edit your nconfig.php file</li>
+	<code>$portaladmin = 2;
+    define('network', 'enabled');
+    if ( defined('network') ):
+    $dbhost2 = 'hub.domain.name.here';
+    $dbname2 = 'hub_db';
+    $dbuname2 = 'ask for a hub user name and put it here';
+    $dbpass2 = 'you need to request an access password to put here';
+    $network_prefix = 'network';
+    endif;</code>
+	<li><b>This Config is needed to submit Bug Reports!</b></li>
+</ul>
+
+<ul>
+	<li>Easy Apache 4 / Apache 2.4.54</li>
+	<li>MySQL Server Version: 5.5.5-10.3.37-MariaDB (MariaDB Server) The fastest on the planet!</li>
+	<li>PHP 8.1.14 / php-fpm 8.1.14 (we are working on a version for PHP 9)</li>
+	<li>cURL&nbsp;7.86.0</li>
 	<li>GD Support bundled (2.1.0 compatible)</li>
-	<li>Client API library version (mysqlnd/mysqli 7.4.30)</li>
-	<li>OpenSSL 1.1.1q 5 Jul 2022</li>
+	<li>Client API library version (mysqlnd/mysqli 8.1.14)</li>
+	<li>OpenSSL 1.1.1s 1 Nov 2022</li>
 	<li>libxml Version 2.9.7</li>
 	<li>json support</li>
 	<li>Phar API version v1.1.1</li>
 	<li>ZLib 1.9.2</li>
 	<li>Minimum of 100 MB/s web space</li>
 	<li>Minimum of 5 GB/s bandwidth (5 TB/s or unmetered is recommended)</li>
-	<li>Mime Type .wasm for Flash Gaming and Movie Support (This is what we do in 2022)</br>This is so that ruffle can process .swf files.</li>
+	<li>Mime Type .wasm for Flash Gaming and Movie Support (This is what we started to do in 2022)</br>This is so that ruffle can process .swf files.</li>
 </ul>
 Apache doesn't serve these files correctly by default, you will need to add this to your `httpd.conf` configuration file or root .htaccess file and reload it:
 

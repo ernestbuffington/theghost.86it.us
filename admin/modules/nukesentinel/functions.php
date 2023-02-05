@@ -49,10 +49,8 @@ function abget_countrytitle($c2c){
 
 function absave_config($config_name, $config_value){
   global $prefix, $db, $cache;
-  if(!get_magic_quotes_runtime()) {
-    $config_name = addslashes($config_name);
-    $config_value = addslashes($config_value);
-  }
+  $config_name = addslashes($config_name);
+  $config_value = addslashes($config_value);
   $resultnum = $db->sql_numrows($db->sql_query("SELECT * FROM `".$prefix."_nsnst_config` WHERE `config_name`='$config_name' LIMIT 0,1"));
   if($resultnum < 1) {
     $db->sql_query("INSERT INTO `".$prefix."_nsnst_config` (`config_name`, `config_value`) VALUES ('$config_name', '$config_value')");
@@ -375,14 +373,6 @@ function help_img($abinfo)
 {
     global $ab_config;
     return display_help_icon($abinfo,'html');
-  // if($ab_config['help_switch'] > 0) 
-  // {
-  //   return "<a href=\"javascript:void(0);\" onclick=\"return overlib('".addslashes($abinfo)."', STICKY, CENTERPOPUP, CAPTION, '"._AB_HELPSYS."', STATUS, '"._AB_HELPSYS."', WIDTH, 400, FGCOLOR, '#ffffff', BGCOLOR, '#000000', TEXTCOLOR, '#000000', CAPCOLOR, '#ffffff', CLOSECOLOR, '#ffffff', CAPICON, 'images/nukesentinel/helpicon.png', BORDER, '2', TEXTFONT, 'Lucida Sans, Arial', TEXTSIZE, '12px', CLOSEFONT, 'Lucida Sans, Arial', CLOSESIZE, '12px', CAPTIONFONT, 'Lucida Sans, Arial', CAPTIONSIZE, '12px');\"><img src='images/nukesentinel/helpicon.png' border='0' height='16' width='16' alt='' title='' /></a>";
-  // } 
-  // else 
-  // {
-  //   return "<a href=\"javascript:void(0);\" onmouseover=\"return overlib('".addslashes($abinfo)."', STICKY, CENTERPOPUP, CAPTION, '"._AB_HELPSYS."', STATUS, '"._AB_HELPSYS."', WIDTH, 400, FGCOLOR, '#ffffff', BGCOLOR, '#000000', TEXTCOLOR, '#000000', CAPCOLOR, '#ffffff', CLOSECOLOR, '#ffffff', CAPICON, 'images/nukesentinel/helpicon.png', BORDER, '2', TEXTFONT, 'Lucida Sans, Arial', TEXTSIZE, '12px', CLOSEFONT, 'Lucida Sans, Arial', CLOSESIZE, '12px', CAPTIONFONT, 'Lucida Sans, Arial', CAPTIONSIZE, '12px');\" onmouseout=\"return nd();\"><img src='images/nukesentinel/helpicon.png' border='0' height='16' width='16' alt='' title='' /></a>";
-  // }
 }
 
 function info_img($abinfo) {

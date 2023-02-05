@@ -31,6 +31,11 @@ echo "\n<!-- TITANIUM CORE THEME HEADER START -->\n";
 
 # Check if a Registered User is Logged-In
 $username = is_user() ? $userinfo['username'] : _ANONYMOUS;
+$theuser = '';
+$scrollmsg = '';
+$moreuser_info = '';
+$marquee_one = '';
+$date = '';
 
 # Setup the Welcome Information for the User
 if ($username === _ANONYMOUS)
@@ -100,11 +105,12 @@ $scrollmsg .= ' Ezekiel 25,17. "The path of the righteous man is beset of all si
 
 $scrollmsg .= 'The current Beta release of PHP-Nuke Titanium is v'.NUKE_TITANIUM.' ::: ';
 
-$detect = new Mobile_Detect;
+//$detect = new Mobile_Detect;
+$detect = new \Detection\MobileDetect;
 
 $scrollmsg .= 'It\'s nice to see you using Windows v'.$detect->version('Windows NT').' :::';
 
-global $connected;
+global $connected, $appID;
 
 $moreuser_info .= '';
 $moreuser_info .= '';
@@ -121,7 +127,7 @@ else:
 $marquee_one .= ' login to our facebook app and you will be able to use the like and comments sections of this web portal...';
 endif;
 global $board_config;
-$serverdate = EvoDate($board_config['default_dateformat'], time(), $board_config['board_timezone']);
+$serverdate = FormatDate($board_config['default_dateformat'], time(), $board_config['board_timezone']);
 
 $date .= '::: <span style=color:orange> QUOTE OF THE DAY “Every saint has a past, and every sinner has a future.”  ~ Oscar Wilde</span> ::: Today is <span style="color:'.$textcolor2.'">'.$serverdate.'</span>';
 
@@ -220,7 +226,7 @@ echo "\n<!-- HEADER Loading Logo -->\n";
 echo '<div style="padding-top:26px;"></div>'."\n\n"; //Set the padding - how far down the logo sits
 ?>
 <div style="margin: auto;">
-<a href="https://github.com/ernestbuffington/theghost.86it.us" target="_blank"><img class="hover_effect" width="64" src="images/brands/png/github-active.png" /></a>&nbsp;&nbsp;
+<a href="https://github.com/ernestbuffington/PHP-Nuke.Titanium.Dev.4" target="_blank"><img class="hover_effect" width="64" src="images/brands/png/github-active.png" /></a>&nbsp;&nbsp;
 <a href="https://3v4l.org/kuLmD#v7.4.33" target="_blank"><img class="hover_effect" width="64" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" /></a>
 <a href="https://html-css-js.com/html/generator/" target="_blank"><img class="hover_effect" width="64" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" /></a>
 <a href="https://html-css-js.com/css/generator/" target="_blank"><img class="hover_effect" width="64" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /></a>
@@ -269,8 +275,7 @@ echo '<td class="undermarqueeRT"><div class="marquee_two">'.$marquee_two.'</div>
 echo '</tr>';
 
 echo '<tr>';
-echo '<td class="undermarqueeLT">';
-echo '</td>';
+echo '<td class="undermarqueeLT"></td>';
 echo '<td class="undermarqueeRT"></td>';
 echo '</tr>';
 

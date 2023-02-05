@@ -37,7 +37,6 @@ define("_VICTOIRES", "NUMBER OF WINS");
 
 define('IN_PHPBB', true);
 include_once('includes/functions.php');
-define('IN_PHPBB', false);
 
 global $prefix, $user_prefix, $db, $ThemeSel, $board_config;
 
@@ -147,6 +146,7 @@ if ($top) {
     
 	$content .= "<br /> <span class=\"w3-tag w3-round w3-blue\">"._VICTOIRES."</span> <span class=\"w3-badge w3-blue\"><strong>$nbvictprec</strong></span> <br /><br />\n";
 
+    $count = $count ?? '0';
     $count = $count + 1;
   }
 
@@ -349,25 +349,46 @@ if ($whos_playing)
   $content .= "<th class=\"arcadeThHead\" width=\"100%\" colspan=\"2\" align=\"center\"><strong>Who's Playing</strong></th>\n";
   $content .= "</tr>\n";
 
-  $sql = "SELECT u.username, u.user_id, u.user_level, user_allow_viewonline, g.game_name, g.game_id FROM ".$prefix."_bbgamehash gh LEFT JOIN ".$prefix."_bbsessions s 
-  ON gh.user_id = s.session_user_id LEFT JOIN ".$user_prefix."_users u 
+  $sql = "SELECT u.username, 
+                 u.user_id, 
+				 u.user_level, 
+				 user_allow_viewonline, 
+				 g.game_name, 
+				 g.game_id 
+				 
+  FROM ".$prefix."_bbgamehash gh 
+  
+  LEFT JOIN ".$prefix."_bbsessions s 
+  
+  ON gh.user_id = s.session_user_id 
+  
+  LEFT JOIN ".$user_prefix."_users u 
+  
   ON gh.user_id = u.user_id LEFT 
+  
   JOIN ".$prefix."_bbgames g 
+  
   ON gh.game_id = g.game_id WHERE gh.hash_date >= s.session_time AND (" . time() . "- gh.hash_date <= 300) 
+  
   ORDER BY gh.hash_date DESC";
 
   $result = $db->sql_query($sql);
 
   while ($row = $db->sql_fetchrow($result)) {
-    $players[] = $row;
+	$players[] = $row;
   }
-
-  $nbplayers = count(array($players));
+  
+  if (!empty($players) && $players != 0): 
+    if(!isset($nbplayers))
+	$nbplayers = 0;
+	$nbplayers = count(array($players));
+  endif;
+  
   $listeid = array();
   $games_players = array();
   $games_names = array();
 
-  if ($nbplayers != 0) 
+  if (!empty($nbplayers) && $nbplayers != 0) 
   {
     $content .="<tr>\n";
     $content .="<td class=\"arcadeRow1\"><strong>Game</strong></td>\n";

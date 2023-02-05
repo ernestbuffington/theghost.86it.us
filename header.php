@@ -2,6 +2,7 @@
 /*======================================================================= 
   PHP-Nuke Titanium | Nuke-Evolution Xtreme : PHP-Nuke Web Portal System
  =======================================================================*/
+
 /************************************************************************/
 /* PHP-NUKE: Advanced Content Management System                         */
 /* ============================================                         */
@@ -13,6 +14,7 @@
 /* it under the terms of the GNU General Public License as published by */
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
+
 /*****[CHANGES]**********************************************************
 -=[Base]=-
       NukeSentinel                             v2.5.00      07/11/2006
@@ -24,6 +26,7 @@
       Collapsing Blocks                        v1.0.0       08/16/2005
 	  NSN Center Blocks                        v2.2.1       05/26/2009
  ************************************************************************/
+
 if(!defined('HEADER')): 
  define('HEADER', true); 
 else: 
@@ -55,9 +58,9 @@ function head()
 	$ThemeSel = get_theme();
 	
 	echo "<!-- Loading Auto MimeType v1.0.0 from header.php -->\n";
-	if (@file_exists(NUKE_THEMES_DIR.$ThemeSel.'/includes/mimetype.php')):  
+	if (file_exists(NUKE_THEMES_DIR.$ThemeSel.'/includes/mimetype.php')):  
     include(NUKE_THEMES_DIR.$ThemeSel.'/includes/mimetype.php');
-	else: 
+	else:  # OLD SCHOOL DEFAULT MIMETYPE START
       echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd" />'."\n";
       echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="'._LANGCODE.'" />'."\n";
       echo '<html xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="https://www.facebook.com/2008/fbml" />'."\n"; 
@@ -70,7 +73,7 @@ function head()
       echo '<meta http-equiv="Content-Language" content="'._LANGCODE.'" />'."\n";
       echo '<meta http-equiv="Content-Style-Type" content="text/css" />'."\n";
       echo '<meta http-equiv="Content-Script-Type" content="text/javascript" />'."\n";
-    endif;	
+    endif;	# OLD SCHOOL DEFAULT MIMETYPE END
 
 	echo "<!-- Loading dynamic meta tags from database from includes/meta.php -->\n";
     include_once(NUKE_INCLUDE_DIR.'meta.php');
@@ -83,21 +86,18 @@ function head()
 
 	#################################################################
 	echo "\n<!-- Loadiing class.browsers.php from header.php -->\n";#
-	if (@file_exists(TITANIUM_CLASSES_DIR . 'class.browsers.php'))  #      Added by Ernest Buffington
+	if (file_exists(TITANIUM_CLASSES_DIR . 'class.browsers.php'))   #      Added by Ernest Buffington
 	include(TITANIUM_CLASSES_DIR . 'class.browsers.php');           #----- Load Browser class - used for checking your browser types
-    #                                                               #      Start date Jan 1st 2012 till Present - It is a work in progress!
+                                                                    #      Start date Jan 1st 2012 till Present - It is a work in progress!
     #################################################################
-	echo "\n<!-- Loadiing cookies.php from header.php -->\n";#
-	if (@file_exists(TITANIUM_INCLUDE_DIR . 'cookies.php'))  #            Added by Ernest Buffington
-	include(TITANIUM_INCLUDE_DIR . 'cookies.php');           #----------- Load the custom cookies file if it exist COOKIE CONTROL
-    ##########################################################            Jan 1st 2012 
-	include_once(NUKE_INCLUDE_DIR.'javascript.php');         #------ Javascript Loader 09/21/2019
-    ########################################################## 
+	echo "\n<!-- Loadiing cookies.php from header.php -->\n";       #
+	if (file_exists(TITANIUM_INCLUDE_DIR . 'cookies.php'))          #            Added by Ernest Buffington Jan 1st 2012 
+	include(TITANIUM_INCLUDE_DIR . 'cookies.php');                  #----------- Load the custom cookies file if it exist COOKIE CONTROL
+    ########################################################################               
+	echo "\n<!-- Loadiing includes/javascript.php from header.php -->\n";  #------ Javascript Loader 09/21/2019
+	include_once(NUKE_INCLUDE_DIR.'javascript.php');                       #
+    ######################################################################## 
 
-	if (@file_exists(NUKE_THEMES_DIR.$ThemeSel.'/includes/javascript.php')): # CHECK FOR THEME JAVASCRIPT Added by Ernest Buffington 3/16/2021 10:58am
-	  echo "\n<!-- Loadiing themes/".$ThemeSel."/includes/javascript.php from header.php -->\n\n";
-      include_once(NUKE_THEMES_DIR.$ThemeSel.'/includes/javascript.php');
-	endif;
 
 	global $titanium_browser;
     $titanium_browser = new Browser();
@@ -108,13 +108,19 @@ function head()
 	addPHPCSSToHead(NUKE_BASE_DIR.'includes/css/cms_css.php','file');
     # FlyKit Mod v1.0.0 END
 
+	if (file_exists(NUKE_THEMES_DIR.$ThemeSel.'/includes/javascript.php')): # CHECK FOR THEME JAVASCRIPT Added by Ernest Buffington 3/16/2021 10:58am
+	  echo "\n<!-- Loadiing themes/".$ThemeSel."/includes/javascript.php from header.php -->\n\n";
+      include_once(NUKE_THEMES_DIR.$ThemeSel.'/includes/javascript.php');
+	endif;
+
     # START Load current theme. - 09/07/2019
 	echo "\n<!-- Loadiing themes/".$ThemeSel."/theme.php from header.php -->\n";
     include_once(NUKE_THEMES_DIR.$ThemeSel.'/theme.php');
 	# START Load current theme. - 09/07/2019
 
+
 	echo "\n<!-- Loadiing favicon from header.php -->\n\n";
-    if ((($favicon = $cache->load('favicon', 'config')) === false) || empty($favicon)): 
+    if (!($favicon = $cache->load('favicon', 'titanium_config'))): 
         if (file_exists(NUKE_BASE_DIR.'favicon.ico')) 
 		$favicon = "favicon.ico";
 		else 
@@ -127,7 +133,7 @@ function head()
         $favicon = 'none';
 		if ($favicon != 'none') 
         echo "<link rel=\"shortcut icon\" href=\"$favicon\" type=\"image/x-icon\" />\n";
-        $cache->save('favicon', 'config', $favicon);
+        $cache->save('favicon', 'titanium_config', $favicon);
 	else: 
         if ($favicon != 'none') 
         echo "<link rel=\"shortcut icon\" href=\"$favicon\" type=\"image/x-icon\" />\n";
@@ -139,7 +145,7 @@ function head()
     writeHEAD();
 
 
-	if ((($custom_head = $cache->load('custom_head', 'config')) === false) || empty($custom_head)): 
+	if (!($custom_head = $cache->load('custom_head', 'titanium_config'))): 
     
 	    $custom_head = array();
 
@@ -161,7 +167,7 @@ function head()
             endforeach;
         
 		endif;
-		$cache->save('custom_head', 'config', $custom_head);
+		$cache->save('custom_head', 'titanium_config', $custom_head);
 	else: 
         
 		if (!empty($custom_head)): 
@@ -220,15 +226,6 @@ function online()
     $guest = 0;
 	else:
 
-    //if(($user_agent['engine'] == 'bot')):
-    //$uname = $user_agent['bot'];
-	//$guest = 3;
-    //endif;
-    
-	//if(($user_agent['engine'] == '')):
-	//endif;
-    # Facebook IP Range
-
 	if( 
 	   ($ip == '173.252.127.24') 
 	|| ($ip == '173.252.127.12') 
@@ -248,7 +245,6 @@ function online()
 	|| ($ip == '173.252.127.14')
 	|| ($ip == '173.252.127.29')
 	|| ($ip == '173.252.127.19')
-
     || ($ip == '69.171.251.9')	
     || ($ip == '69.171.251.16')	
     || ($ip == '69.171.251.19')	
@@ -296,7 +292,7 @@ function online()
 		$guest = 3;
 
 	}
-    # This is a Tor Exit Router
+    # This is a Twitter Bot
 	if($ip == '199.16.157.183'){
 
         $uname = 'Twitter Bot';
@@ -345,7 +341,7 @@ function online()
 
 	}
 	
-    # This is Amazon
+    # This is an Amazon Bot
 	if(($ip == '100.25.148.103') 
 	|| ($ip == '100.25.148.103')
 	)
@@ -356,7 +352,7 @@ function online()
 
 	}
 		
-    # This is AWS
+    # This is an AWS Bot
 	if(($ip == '34.233.208.215') 
 	|| ($ip == '34.233.58.209')
 	)
@@ -388,7 +384,7 @@ function online()
 
 	# Microsoft Corporation
 	if(($ip == '13.66.139.107')
-	|| ('157.55.39.150')
+	|| ($ip == '157.55.39.150')
 	|| ($ip == '13.68.247.245'))
 	{
 
@@ -439,7 +435,7 @@ function online()
      * We now add resoultion to the visitor log! 10/07/2022 TheGhost
      * @since 4.0.3
      */
-     if ( $guest == 0 ):
+     if ($guest == 0 ):
      $db->sql_query("REPLACE INTO `".$prefix."_users_who_been` (`user_ID`, 
 	                                                           `username`, 
 											                 `last_visit`,
