@@ -1,0 +1,17 @@
+h1.bs-admin-title {
+	text-align: center;
+	font-weight: 800; 
+	margin-bottom: 30px;
+}
+
+
+
+
+
+
+@media (max-width: 768px) 
+{
+	.toggle_menu.opacity_one {
+		opacity: 0;
+	}
+}

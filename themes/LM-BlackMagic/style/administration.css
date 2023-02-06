@@ -1,0 +1,372 @@
+:root {
+	--inset-shadow-white-op2: rgba(255, 255, 255, .2);
+}
+
+.news-feed-title {
+	border-bottom: 1px dashed #cccccc; 
+	padding-bottom: 1px;
+}
+.news-feed-time {
+	font-size: 70%;
+}
+.news-feed-message {
+	padding: 0; 
+	margin-left: 15px; 
+	margin-bottom: 10px; 
+	/*font: 12px Monaco, \"Open Sans\", sans-serif;*/
+	white-space: break-spaces;
+}
+
+.administration-container
+{
+	display: flex;
+}
+
+.live-feed a {
+	position: absolute;
+	right: 15px;
+	top: auto;
+}
+.live-feed a::before {
+	content: '\f2f1';
+	font-family: 'font awesome 5 free';
+	font-weight: 600;
+}
+
+.live-feed-panel,
+.admin-buttons-panel {
+	padding: 0;
+}
+
+.important-panel {
+	padding-right: 0;
+}
+
+.admin-buttons {
+	position: relative; 
+	height: 42px; 
+	overflow: hidden;
+	border: 1px solid #000;
+}
+
+.admin-buttons a {
+	display: flex; 
+	height: 100%; 
+	align-items: center; 
+	padding-left: 15px;
+}
+
+.admin-buttons .icon {
+    display: inline-block;
+    position: absolute;
+    bottom: -20px;
+    right: -7px;
+}
+
+.admin-buttons .icon i {
+    font-size: 80px;
+    color: #808080;
+    opacity: .2;
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+/*.admin-buttons-container:nth-child(4n+0) {
+	padding-right: 0;
+}*/
+
+.live-feed,
+.important-info {
+	background-color: #1d1d1d;
+	border: 1px solid #000;
+	background-image: -webkit-linear-gradient(bottom, #1a1b1f, #2a2a34);
+	background-image: -moz-linear-gradient(bottom, #1a1b1f, #2a2a34);
+	background-image: -o-linear-gradient(bottom, #1a1b1f, #2a2a34);
+	background-image: radial-gradient(ellipse farthest-corner at center 0px,#31a2a6 -150%,#333240 45%,#333240 85%);
+	/* background-image: radial-gradient(ellipse farthest-corner at center 0px,#0c2c4f -150%,#0e3259 45%,#0e3259 85%); */
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3), inset 0 1px 1px rgba(255, 255, 255, .2);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3), inset 0 1px 1px rgba(255, 255, 255, .2);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .3), inset 0 1px 1px rgba(255, 255, 255, .2);
+
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.important-Bx ul {
+	list-style: none;
+	padding: 0;
+}
+
+.feed-Bx,
+.important-Bx,
+/*.important-Bx li,*/
+.admin-buttons {
+    box-shadow: none;
+    background: #202126;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, .2);
+    border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+.feed-Bx {
+	height: 245px; 
+	overflow: auto; 
+	padding: 10px;
+}
+.important-Bx {
+	height: 245px; 
+	overflow: auto;
+	border-left: none;
+}
+.important-Bx li {
+	background: #202126;
+	border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2);
+}
+.important-Bx li:last-of-type {
+	border-bottom: none;
+}
+
+.list-group-item {
+	border-top: none;
+	margin-bottom: 0;
+}
+
+.list-group-item:first-child {
+	border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.list-group-item:last-child {
+	border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+
+/**
+ * Admin login intrusion
+ */
+.bg-warning {
+    background-color: #f39c12 !important;
+}
+
+.small-box {
+	margin-top: 25px;
+    border: 1px solid #000;
+    padding: 20px 30px;
+    position: relative;
+    height: 120px;
+    overflow: hidden;
+
+    border-radius: 4px;
+}
+
+.small-box .title {
+    /*font-size: 26px;*/
+    font-size: 24px;
+    font-weight: 300;
+    color: #26c3f6;
+    text-transform: uppercase;
+}
+
+.small-box.bg-dark {
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, .2);
+    background-image: linear-gradient(to top, #1a1b1f, #212528);
+}
+
+.small-box.bg-danger {
+	background-color: var(--danger) !important;
+    box-shadow: inset 0 1px 1px var(--inset-shadow-white-op2);
+}
+
+.small-box.bg-warning h2,
+.small-box.bg-warning .desc,
+.small-box.bg-warning .icon i,
+
+.small-box.bg-danger h2,
+.small-box.bg-danger .desc,
+.small-box.bg-danger .icon i {
+	color: var(--white);
+}
+
+.small-box .desc {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(128, 128, 128, 0.6);
+    color: #ccc;
+}
+
+.small-box .icon {
+    display: inline-block;
+    position: absolute;
+    bottom: -8px;
+    right: 0px;
+}
+
+.small-box .icon i {
+	font-size: 135px;
+    color: #808080;
+    opacity: .2;
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation:portrait)
+{
+	.admin-buttons a
+	{
+		color: violet;
+	}
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 479px)
+{
+	.admin-buttons a
+	{
+		color: pink;
+	}
+
+	.important-panel
+	{
+		margin-top: 25px;
+		padding-left: 0;
+	}
+
+	.admin-info-cubes
+	{
+		padding: 0;
+	}
+
+	.admin-buttons-container
+	{
+		padding-right: 0;
+	}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px)
+{
+	.admin-buttons a
+	{
+		color: blue;
+	}
+
+	.important-panel
+	{
+		margin-top: 25px;
+		padding-left: 0;
+	}
+
+	.admin-info-cubes:nth-child(1),
+	.admin-info-cubes:nth-child(3)
+	{
+		padding-left: 0;
+	}
+
+	.admin-info-cubes:nth-child(2),
+	.admin-info-cubes:nth-child(4)
+	{
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.admin-buttons-container:nth-child(2n+0)
+	{
+		padding-right: 0;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px)
+{
+	.admin-buttons a
+	{
+		color: orange;
+	}
+
+	.important-panel
+	{
+		margin-top: 25px;
+		padding-left: 0;
+	}
+
+	.admin-info-cubes:nth-child(1),
+	.admin-info-cubes:nth-child(3)
+	{
+		padding-left: 0;
+	}
+
+	.admin-info-cubes:nth-child(2),
+	.admin-info-cubes:nth-child(4)
+	{
+		padding-right: 0;
+	}
+
+	.admin-buttons-container:nth-child(3n+0)
+	{
+		padding-right: 0;
+	}
+
+	.news-feed-message {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (min-width: 992px)
+{
+	.admin-buttons a
+	{
+		color: gold;
+	}
+
+	.admin-info-cubes h2.title
+	{
+		font-size: 24px;
+	}
+
+	.admin-info-cubes span.desc
+	{
+		font-size: 12px;
+	}
+
+	.admin-info-cubes:first-child
+	{
+		padding-left: 0;
+	}
+
+	.admin-info-cubes:last-child
+	{
+		padding-right: 0;
+	}
+
+	.admin-buttons-container:nth-child(4n+0)
+	{
+		padding-right: 0;
+	}
+}
+
+@media (min-width: 992px) and (max-width : 1200px)
+{
+	.admin-buttons a
+	{
+		color: brown;
+	}
+
+	.admin-info-cubes:nth-child(2)
+	{
+		padding-right: 0;
+	}
+
+	.admin-info-cubes:nth-child(3)
+	{
+		padding-left: 0;
+	}
+
+	.news-feed-message {
+		font-size: 16px;
+	}
+}
