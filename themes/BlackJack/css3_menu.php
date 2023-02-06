@@ -28,7 +28,7 @@ echo '        <li><a href="'.HTTPS.'modules.php?name=Forums">Forums Main</a></li
 echo '        <li><a href="'.HTTPS.'modules.php?name=Forums&file=search">Forums Search</a></li>';
 echo '        <li><a href="'.HTTPS.'modules.php?name=Forums&file=search&search_id=newposts">New Posts</a></li>';
 echo '        <li><a href="'.HTTPS.'modules.php?name=Forums&file=search&search_id=unanswered">Unanswered Posts</a></li>';
-echo '        <li><a href="'.HTTPS.'modules.php?name=Your_Account&redirect=search&search_id=egosearch">My Posts</a></li>';
+echo '        <li><a href="'.HTTPS.'modules.php?name=Forums&file=search&search_id=egosearch">My Posts</a></li>';
 echo '        <li>---------------------------------</li>';
 echo '        <li><a style="color: pink;" href="'.HTTPS.'modules.php?name=Forums&file=viewonline">Who is Online</a></li>';
 echo '        <li><a style="color: red;" href="'.HTTPS.'modules.php?name=Forums&file=rules">Forum Rules</a></li>';
