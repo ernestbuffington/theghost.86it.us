@@ -105,6 +105,32 @@ define('BODY_CONTAIN', 'background-size: 100% auto, cover;
                              background-attachment: fixed;
                               background-repeat: repeat-y;'); // stretch this whore out
 ?>
+/*
+ * COMMENT SYSTEM IN BLOG ARTICLES
+ *----------------------------------------
+ */
+#respond {
+  margin-top: 40px;
+}
+
+#respond input[type='text'],
+#respond input[type='email'],
+#respond textarea {
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+
+  line-height: 1.4em;
+}
+
 /**
  * Stylesheet for the Titanium Core Theme
  *
@@ -356,47 +382,6 @@ background-color: black;
 body {
 
 }
-input[type='submit'] {
-    transition: all .5s ease;
-    color: <?=$textcolor1?>;
-    border: 3px solid <?=$button_border_color?>;
-    font-family:'Montserrat', sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1;
-    font-size: 12px;
-    font-weight: bold;
-    background-color : transparent;
-    padding: 6px;
-    outline: none;
-    border-radius: 4px;
-}
-input[type='submit']:hover {
-    color: <?=$button_hover_border_color?>;
-    background-color: #000000;
-    font-weight: bold;
-}
-
-input[type='button'] {
-    transition: all .5s ease;
-    color: <?=$textcolor1?>;
-    border: 3px solid <?=$button_border_color?>;
-    font-family:'Montserrat', sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1;
-    font-size: 12px;
-    font-weight: bold;
-    background-color : transparent;
-    padding: 6px;
-    outline: none;
-    border-radius: 4px;
-}
-input[type='button']:hover {
-    color: <?=$button_hover_border_color?>;
-    background-color: #000000;
-    font-weight: bold;
-}
 
 input[type='text'] {
     color: <?=$textcolor1?>;
@@ -465,10 +450,54 @@ input[type='radio'] {
   background-color: #151515;
 }
 
+input[type='button'] {
+    transition: all .5s ease;
+    color: white;
+    border: 1px solid #bfbfbf;
+    font-family:'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    font-size: 12px;
+    font-weight: bold;
+    background-color : black;
+    padding: 6px;
+    outline: none;
+    border-radius: 4px;
+}
+input[type='button']:hover {
+    color: goldenrod;
+    border: 1px solid <?=$button_hover_border_color?>;
+    background-color: #151515;
+    font-weight: bold;
+}
+
+input[type='submit'] {
+    transition: all .5s ease;
+    color: white;
+    border: 1px solid #bfbfbf;
+    font-family:'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    font-size: 12px;
+    font-weight: bold;
+    background-color : black;
+    padding: 6px;
+    outline: none;
+    border-radius: 4px;
+}
+input[type='submit']:hover {
+    color: goldenrod;
+    border: 1px solid <?=$button_hover_border_color?>;
+    background-color: #151515;
+    font-weight: bold;
+}
+
 a.buttonlink:link {
     transition: all .5s ease;
-    color: <?=$textcolor1?>;
-    border: 3px solid <?=$button_border_color?>;
+    color: white;
+    border: 1px solid #bfbfbf;
     font-family:'Montserrat', sans-serif;
     text-transform: uppercase;
     text-align: center;
@@ -481,8 +510,9 @@ a.buttonlink:link {
     border-radius: 4px;
 }
 a.buttonlink:hover {
-    color: <?=$button_hover_border_color?>;
-    background-color: #000000;
+    color: goldenrod;
+    border: 1px solid <?=$button_hover_border_color?>;
+    background-color: #151515;
     font-weight: bold;
 }
 
@@ -574,4 +604,37 @@ td.HeightController{
   margin-right: 8px;
 }
 
-<?
+.progress-bar
+{
+	position: relative;
+	margin:0 auto; 
+	width: 98%; 
+	height: 25px;
+	padding: 1px; 
+	border: 2px solid silver;
+	box-shadow: 0 0 2px #333;
+}
+
+.progress-bar > span 
+{
+	display: block;
+	height: 100%;
+	max-width:100%;
+	background: green;
+	position: relative;
+	overflow: hidden;
+	width: 50%;
+	transition: width 0.8s;
+}
+
+.progress-bar > span.upload 
+{
+	display: block;
+	height: 100%;
+	background: green;
+	position: relative;
+	overflow: hidden;
+	width: 0%;
+	transition: width 0.8s;
+}
+

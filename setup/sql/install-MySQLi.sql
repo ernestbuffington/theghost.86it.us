@@ -855,7 +855,7 @@ CREATE TABLE IF NOT EXISTS `#prefix#_blogs_autoblog` (
 
 CREATE TABLE IF NOT EXISTS `#prefix#_blogs_cat` (
   `catid` int(11) NOT NULL,
-  `title` varchar(20) NOT NULL DEFAULT '',
+  `title` varchar(120) NOT NULL DEFAULT '',
   `counter` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -1496,7 +1496,7 @@ CREATE TABLE IF NOT EXISTS `#prefix#_nsncb_config` (
   `count` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-CREATE TABLE IF NOT EXISTS `#prefix#_nsnne_config` (
+CREATE TABLE IF NOT EXISTS `#prefix#_blogs_config` (
   `config_name` varchar(255) NOT NULL DEFAULT '',
   `config_value` longtext NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
